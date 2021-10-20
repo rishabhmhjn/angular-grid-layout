@@ -1,4 +1,5 @@
 import { InjectionToken } from '@angular/core';
+import { _ClientRect } from './utils/client-rect';
 import { CompactType, LayoutItem } from './utils/react-grid-layout.utils';
 
 export type KtdGridLayoutItem = LayoutItem;
@@ -40,7 +41,7 @@ export const GRID_ITEM_GET_RENDER_DATA_TOKEN: InjectionToken<KtdGridItemRenderDa
 export interface KtdDraggingData {
     pointerDownEvent: MouseEvent | TouchEvent;
     pointerDragEvent: MouseEvent | TouchEvent;
-    gridElemClientRect: ClientRect;
-    dragElemClientRect: ClientRect;
+    gridElemClientRect: _ClientRect;
+    dragElemClientRect: _ClientRect;
     scrollDifference: { top: number, left: number };
 }

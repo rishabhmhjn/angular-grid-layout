@@ -15,7 +15,7 @@ import {
 import { ktdMouseOrTouchEnd, ktdPointerClientX, ktdPointerClientY } from './utils/pointer.utils';
 import { KtdDictionary } from '../types';
 import { KtdGridService } from './grid.service';
-import { getMutableClientRect } from './utils/client-rect';
+import { getMutableClientRect, _ClientRect } from './utils/client-rect';
 import { ktdGetScrollTotalRelativeDifference$, ktdScrollIfNearElementClientRect$ } from './utils/scroll';
 import { BooleanInput, coerceBooleanProperty } from './coercion/boolean-property';
 
@@ -350,8 +350,8 @@ export class KtdGridComponent implements OnChanges, AfterContentInit, AfterConte
 
         return new Observable<KtdGridLayout>((observer: Observer<KtdGridLayout>) => {
             // Retrieve grid (parent) and gridItem (draggedElem) client rects.
-            const gridElemClientRect: ClientRect = getMutableClientRect(this.elementRef.nativeElement as HTMLElement);
-            const dragElemClientRect: ClientRect = getMutableClientRect(gridItem.elementRef.nativeElement as HTMLElement);
+            const gridElemClientRect: _ClientRect = getMutableClientRect(this.elementRef.nativeElement as HTMLElement);
+            const dragElemClientRect: _ClientRect = getMutableClientRect(gridItem.elementRef.nativeElement as HTMLElement);
 
             const scrollableParent = typeof this.scrollableParent === 'string' ? document.getElementById(this.scrollableParent) : this.scrollableParent;
 

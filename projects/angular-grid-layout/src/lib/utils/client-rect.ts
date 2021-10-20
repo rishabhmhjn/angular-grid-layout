@@ -1,3 +1,11 @@
+export interface _ClientRect {
+    top: number;
+    right: number;
+    bottom: number;
+    left: number;
+    width: number;
+    height: number;
+}
 
 // tslint:disable
 
@@ -9,7 +17,7 @@
 
 
 /** Gets a mutable version of an element's bounding `ClientRect`. */
-export function getMutableClientRect(element: Element): ClientRect {
+export function getMutableClientRect(element: Element): _ClientRect {
   const clientRect = element.getBoundingClientRect();
 
   // We need to clone the `clientRect` here, because all the values on it are readonly
@@ -32,7 +40,7 @@ export function getMutableClientRect(element: Element): ClientRect {
  * @param x Coordinates along the X axis.
  * @param y Coordinates along the Y axis.
  */
-export function isInsideClientRect(clientRect: ClientRect, x: number, y: number) {
+export function isInsideClientRect(clientRect: _ClientRect, x: number, y: number) {
   const {top, bottom, left, right} = clientRect;
   return y >= top && y <= bottom && x >= left && x <= right;
 }
@@ -43,7 +51,7 @@ export function isInsideClientRect(clientRect: ClientRect, x: number, y: number)
  * @param top Amount to add to the `top` position.
  * @param left Amount to add to the `left` position.
  */
-export function adjustClientRect(clientRect: ClientRect, top: number, left: number) {
+export function adjustClientRect(clientRect: _ClientRect, top: number, left: number) {
   clientRect.top += top;
   clientRect.bottom = clientRect.top + clientRect.height;
 
@@ -58,7 +66,7 @@ export function adjustClientRect(clientRect: ClientRect, top: number, left: numb
  * @param pointerX Coordinates along the X axis.
  * @param pointerY Coordinates along the Y axis.
  */
-export function isPointerNearClientRect(rect: ClientRect,
+export function isPointerNearClientRect(rect: _ClientRect,
                                         threshold: number,
                                         pointerX: number,
                                         pointerY: number): boolean {
